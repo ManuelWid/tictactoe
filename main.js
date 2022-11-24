@@ -21,6 +21,8 @@ const winArr = [
 let pOarr = []; // player O's tiles
 let pXarr = []; // player X's tiles
 
+msg.innerHTML = `${player}'s turn`;
+
 // main for loop to create 9 boxes in the container div 
 // and add an event listener to each of them
 for(let i = 0; i < 9; i++){
@@ -28,7 +30,6 @@ for(let i = 0; i < 9; i++){
     box.className = "box"; // class for css style
     box.id = i; // storing the tile number as id to retrieve it easily later
     wrap.appendChild(box); // add the new div to the container/wrapper
-    msg.innerHTML = `${player}'s turn`;
 
     // despite having only one const box it will create 9 different event listeners
     // one for each box that is created with every iteration of the for loop
@@ -40,7 +41,7 @@ for(let i = 0; i < 9; i++){
             e.path[0].style.backgroundColor = "rgb(200, 200, 200)";
             if(player == "O"){
                 pOarr.push(Number(e.path[0].id)); // add tile number to players array of tiles
-                checkWin(pOarr); // if no win the running = true
+                checkWin(pOarr); // if no win then running = true
                 if(running){
                     player = "X"; // change the player
                     msg.innerHTML = `${player}'s turn`;
