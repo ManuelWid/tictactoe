@@ -36,11 +36,11 @@ for(let i = 0; i < 9; i++){
     box.addEventListener("click", (e) => { // e will return the event that is triggered
         // check if the game is still running and if the tile is already occupied 
         // by comparing both players arrays with the tile clicked
-        if(running && !pOarr.concat(pXarr).includes(Number(e.path[0].id))){
-            e.path[0].innerHTML = player; // fill tile with X or O
-            e.path[0].style.backgroundColor = "rgb(200, 200, 200)";
+        if(running && !pOarr.concat(pXarr).includes(Number(e.target.id))){
+            e.target.innerHTML = player; // fill tile with X or O
+            e.target.style.backgroundColor = "rgb(200, 200, 200)";
             if(player == "O"){
-                pOarr.push(Number(e.path[0].id)); // add tile number to players array of tiles
+                pOarr.push(Number(e.target.id)); // add tile number to players array of tiles
                 checkWin(pOarr); // if no win then running = true
                 if(running){
                     player = "X"; // change the player
@@ -48,7 +48,7 @@ for(let i = 0; i < 9; i++){
                 };
             }
             else{
-                pXarr.push(Number(e.path[0].id));
+                pXarr.push(Number(e.target.id));
                 checkWin(pXarr);
                 if(running){
                     player = "O";
